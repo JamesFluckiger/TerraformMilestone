@@ -54,6 +54,10 @@ permissions:
   contents: read
 
 env:
+
+
+
+
   TF_VAR_VM_USERNAME: ${{ secrets.VM_USERNAME }}
   TF_VAR_VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
 
