@@ -32,9 +32,9 @@ provider "azurerm" {
 
 
 locals {
-  rg_name = "terraformtest"
-  env = "DevTest"
-  loc = "wus"
+  rg_name  = "terraformtest"
+  env      = "DevTest"
+  loc      = "wus"
   location = "West Us"
 }
 
