@@ -31,9 +31,17 @@ provider "azurerm" {
 
 
 
+locals {
+  rg_name = "terraformtest"
+  env = "DevTest"
+  loc = "wus"
+  location = "West Us"
+}
+
+
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-${var.rg_name}-${var.env}-${var.loc}"
-  location = var.location
+  name     = "rg-${local.rg_name}-${local.env}-${local.loc}"
+  location = local.location
   tags     = { "terraform" = true }
 }
 
