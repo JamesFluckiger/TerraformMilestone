@@ -1,5 +1,5 @@
 terraform {
-    cloud {
+  cloud {
     organization = "jamesafluke1"
 
     workspaces {
