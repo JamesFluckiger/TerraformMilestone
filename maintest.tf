@@ -20,7 +20,7 @@ provider "azurerm" {
   features {}
 
   # CDW sub
-  # subscription_id = "3c2067eb-14d4-42da-83ca-73316e5fce7a"
+  subscription_id = "3c2067eb-14d4-42da-83ca-73316e5fce7a"
   # client_id       = "ZgT8Q~uB3toXh_b06PFKxOZA33hQFVKPZKpMGa_Y"
   # client_secret   = var.client_secret
   # tenant_id       = "c022673d-2b5c-406e-bb6a-d9e40ee64bc9"
