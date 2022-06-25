@@ -1,12 +1,11 @@
 terraform {
-  cloud {
-    organization = "jamesafluke1"
 
-    workspaces {
-      name = "Terraform_Module_ACE_workspace"
-    }
+  backend "azurerm" {
+    resource_group_name  = "tfstate"
+    storage_account_name = "tfstate2107441107"
+    container_name       = "tfstate"
+    key                  = "ANGgU4/i34OV5eaRJTXdW4YLio+gXMaVo3ejSCOEJB3ixvBhAsW/nrCjN8unYQGDnIuSUmmALANe+AStMwGzqg=="
   }
-
 
   required_providers {
     azurerm = {
