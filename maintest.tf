@@ -1,9 +1,3 @@
-variable "sa_key" {
-  type      = string
-  sensitive = "true"
-
-}
-
 terraform {
 
   backend "azurerm" {
