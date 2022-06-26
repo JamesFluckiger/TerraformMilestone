@@ -4,7 +4,7 @@ terraform {
     resource_group_name  = "tfstate"
     storage_account_name = "tfstate2107441107"
     container_name       = "tfstate"
-    key                  = ${{ sa_key }}
+    key                  = var.sa_key
     # key                  = "0ec2WxFCK/BygIeBZtcokHsBSv0EQO3CeoavGqUMeLNqNnonlh6jdqmK3klPelBxV9NVEbqdl8eH+ASttC0NwA=="
   }
 
