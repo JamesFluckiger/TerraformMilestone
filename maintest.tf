@@ -4,7 +4,7 @@ terraform {
     resource_group_name  = "tfstate"
     storage_account_name = "tfstate2107441107"
     container_name       = "tfstate"
-    key                  = "ANGgU4/i34OV5eaRJTXdW4YLio+gXMaVo3ejSCOEJB3ixvBhAsW/nrCjN8unYQGDnIuSUmmALANe+AStMwGzqg=="
+    key                  = "0ec2WxFCK/BygIeBZtcokHsBSv0EQO3CeoavGqUMeLNqNnonlh6jdqmK3klPelBxV9NVEbqdl8eH+ASttC0NwA=="
   }
 
   required_providers {
@@ -18,12 +18,13 @@ terraform {
 
 provider "azurerm" {
   features {}
+  version = latest
 
   # CDW sub
   subscription_id = "3c2067eb-14d4-42da-83ca-73316e5fce7a"
   # client_id       = "ZgT8Q~uB3toXh_b06PFKxOZA33hQFVKPZKpMGa_Y"
   # client_secret   = var.client_secret
-  # tenant_id       = "c022673d-2b5c-406e-bb6a-d9e40ee64bc9"
+  tenant_id       = "c022673d-2b5c-406e-bb6a-d9e40ee64bc9"
 
 }
 
