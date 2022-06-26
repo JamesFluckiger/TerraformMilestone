@@ -18,7 +18,6 @@ terraform {
 
 provider "azurerm" {
   features {}
-  # CDW sub
   subscription_id = "3c2067eb-14d4-42da-83ca-73316e5fce7a"
   # client_id       = "ZgT8Q~uB3toXh_b06PFKxOZA33hQFVKPZKpMGa_Y"
   # client_secret   = var.client_secret
