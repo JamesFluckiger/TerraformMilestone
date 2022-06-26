@@ -18,7 +18,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  version = latest
+  version = "latest"
 
   # CDW sub
   subscription_id = "3c2067eb-14d4-42da-83ca-73316e5fce7a"
