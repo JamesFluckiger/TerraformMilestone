@@ -1,5 +1,5 @@
 variable "sa_key" {
-  type = "string"
+  type = string
   sensitive = "true"
 
 }
