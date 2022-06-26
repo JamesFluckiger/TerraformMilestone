@@ -60,7 +60,7 @@ jobs:
     env:
       TF_VAR_VM_USERNAME: ${{ secrets.VM_USERNAME }}
       TF_VAR_VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
-      TF_VAR_vm_key: ${{ secrets.sa_key }}
+      ARM_ACCESS_KEY: ${{ secrets.sa_key }}
 
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
