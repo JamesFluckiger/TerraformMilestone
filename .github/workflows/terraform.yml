@@ -96,7 +96,7 @@ jobs: #A job is a set of steps that execute on the same runner.
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: 
+      run: |
         cd terraform/${{ matrix.path }}
         terraform init -input=false
 
@@ -106,7 +106,7 @@ jobs: #A job is a set of steps that execute on the same runner.
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run:
+      run: |
         cd terraform/${{ matrix.path }}
         terraform plan -input=false
 
