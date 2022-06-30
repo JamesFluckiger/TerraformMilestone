@@ -109,7 +109,7 @@ jobs: #A job is a set of steps that execute on the same runner.
     - name: Terraform Plan
       run: |
         cd ./${{ matrix.path }}
-        terraform plan -intpu=false
+        terraform plan -input=false
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
