@@ -38,7 +38,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "snet_bastion" {
   resource_group_name  = azurerm_resource_group.rg.name
-  name                 = "snet-${var.snet_bastion_name}"
+  name                 = var.snet_bastion_name
   address_prefixes     = var.snet_bastion_address_space
   virtual_network_name = azurerm_virtual_network.vnet.name
 }
@@ -86,40 +86,38 @@ resource "azurerm_subnet_network_security_group_association" "nsg_association1" 
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-# module "Bastion" {
-#   source   = "../Modules/Bastion/"
-#   location = var.location
-#   rg_name  = azurerm_resource_group.rg.name
-#   snet_id  = azurerm_subnet.snet_bastion.id
-#  tags = { "terraform" = true }
-
-# }
+module "Bastion" {
+  source   = "../Modules/Bastion/"
+  location = var.location
+  rg_name  = azurerm_resource_group.rg.name
+  snet_id  = azurerm_subnet.snet_bastion.id
+}
 
 module "vm_dc1" {
   source               = "../Modules/WindowsVM"
-  nic_name             = "nic_dc1"
+  nic_name             = "nic_pocdc1"
   location             = var.location
   rg_name              = azurerm_resource_group.rg.name
   private_ip_address   = var.dc1_ip
   subnet_id            = azurerm_subnet.snet_adds.id
-  vm_name              = "vmdc1"
+  vm_name              = "vmpocdc1"
   admin_username       = var.vm_username
   admin_password       = var.vm_password
   storage_account_type = "Standard_LRS"
 }
 
-# module "vm_dc2" {
-#   source               = "../Modules/WindowsVM"
-#   nic_name             = "nic_dc2"
-#   location             = var.location
-#   rg_name              = azurerm_resource_group.rg.name
-#   private_ip_address   = var.dc2_ip
-#   subnet_id            = azurerm_subnet.snet_adds.id
-#   vm_name              = "vmdc2"
-#   admin_username       = var.vm_username
-#   admin_password       = var.vm_password
-#   storage_account_type = "Standard_LRS"
-# }
+module "vm_dc2" {
+  source               = "../Modules/WindowsVM"
+  nic_name             = "nic_pocdc2"
+  location             = var.location
+  rg_name              = azurerm_resource_group.rg.name
+  private_ip_address   = var.dc2_ip
+  subnet_id            = azurerm_subnet.snet_adds.id
+  vm_name              = "vmpocdc2"
+  admin_username       = var.vm_username
+  admin_password       = var.vm_password
+  storage_account_type = "Standard_LRS"
+}
 
 
 
