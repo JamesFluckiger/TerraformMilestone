@@ -117,18 +117,18 @@ module "Bastion" {
   snet_id  = azurerm_subnet.snet_bastion.id
 }
 
-module "vm_web1" {
-  source               = "../Modules/WindowsVM"
-  nic_name             = "nic_aceweb1"
-  location             = var.location
-  rg_name              = azurerm_resource_group.rg.name
-  private_ip_address   = var.web1_ip
-  subnet_id            = azurerm_subnet.snet_web.id
-  vm_name              = "vmaceweb1"
-  admin_username       = var.vm_username
-  admin_password       = var.vm_password
-  storage_account_type = "Standard_LRS"
-}
+# module "vm_web1" {
+#   source               = "../Modules/WindowsVM"
+#   nic_name             = "nic_aceweb1"
+#   location             = var.location
+#   rg_name              = azurerm_resource_group.rg.name
+#   private_ip_address   = var.web1_ip
+#   subnet_id            = azurerm_subnet.snet_web.id
+#   vm_name              = "vmaceweb1"
+#   admin_username       = var.vm_username
+#   admin_password       = var.vm_password
+#   storage_account_type = "Standard_LRS"
+# }
 
 module "vm_web2" {
   source               = "../Modules/WindowsVM"
