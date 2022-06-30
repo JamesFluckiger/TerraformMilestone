@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"vm_dc1","Source":"../Modules/WindowsVM","Dir":"../Modules/WindowsVM"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"Bastion","Source":"../Modules/Bastion","Dir":"../Modules/Bastion"},{"Key":"vm_dc2","Source":"../Modules/WindowsVM","Dir":"../Modules/WindowsVM"},{"Key":"vm_dc1","Source":"../Modules/WindowsVM","Dir":"../Modules/WindowsVM"},{"Key":"","Source":"","Dir":"."}]}

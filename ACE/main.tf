@@ -1,12 +1,12 @@
-terraform {
-  cloud {
-    organization = "jamesafluke1"
+# terraform {
+#   cloud {
+#     organization = "jamesafluke1"
 
-    workspaces {
-      name = "Terraform_Module_ACE_workspace"
-    }
-  }
-}
+#     workspaces {
+#       name = "Terraform_Module_ACE_workspace"
+#     }
+#   }
+# }
 
 
 terraform {
@@ -31,10 +31,6 @@ provider "azurerm" {
 
 
 
-resource "github" "name" {
-
-}
-
 
 
 resource "azurerm_resource_group" "rg" {
@@ -55,7 +51,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "snet_bastion" {
   resource_group_name  = azurerm_resource_group.rg.name
-  name                 = "snet-${var.snet_bastion_name}"
+  name                 = "${var.snet_bastion_name}"
   address_prefixes     = var.snet_bastion_address_space
   virtual_network_name = azurerm_virtual_network.vnet.name
 }
@@ -113,79 +109,79 @@ resource "azurerm_subnet_network_security_group_association" "nsg_association2" 
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-# module "Bastion" {
-#   source   = "./Modules/Bastion/"
-#   location = var.location
-#   rg_name  = azurerm_resource_group.rg.name
-#   snet_id  = azurerm_subnet.snet_bastion.id
-# }
+module "Bastion" {
+  source   = "../Modules/Bastion/"
+  location = var.location
+  rg_name  = azurerm_resource_group.rg.name
+  snet_id  = azurerm_subnet.snet_bastion.id
+}
 
 module "vm_web1" {
-  source               = "./Modules/WindowsVM"
-  nic_name             = "nic_web1"
+  source               = "../Modules/WindowsVM"
+  nic_name             = "nic_aceweb1"
   location             = var.location
   rg_name              = azurerm_resource_group.rg.name
   private_ip_address   = var.web1_ip
   subnet_id            = azurerm_subnet.snet_web.id
-  vm_name              = "vmweb1"
+  vm_name              = "vmaceweb1"
   admin_username       = var.vm_username
   admin_password       = var.vm_password
   storage_account_type = "Standard_LRS"
 }
 
-# module "vm_web2" {
-#   source               = "./Modules/WindowsVM"
-#   nic_name             = "nic_web2"
-#   location             = var.location
-#   rg_name              = azurerm_resource_group.rg.name
-#   private_ip_address   = var.web2_ip
-#   subnet_id            = azurerm_subnet.snet_web.id
-#   vm_name              = "vmweb2"
-#   admin_username       = var.vm_username
-#   admin_password       = var.vm_password
-#   storage_account_type = "Standard_LRS"
-# }
+module "vm_web2" {
+  source               = "../Modules/WindowsVM"
+  nic_name             = "nic_aceweb2"
+  location             = var.location
+  rg_name              = azurerm_resource_group.rg.name
+  private_ip_address   = var.web2_ip
+  subnet_id            = azurerm_subnet.snet_web.id
+  vm_name              = "vmaceweb2"
+  admin_username       = var.vm_username
+  admin_password       = var.vm_password
+  storage_account_type = "Standard_LRS"
+}
 
-# module "lb" {
-#   source    = "./Modules/LoadBalancer"
-#   pip_name  = "pip-lb"
-#   lb_name   = "lb-web"
-#   location  = var.location
-#   rg_name   = azurerm_resource_group.rg.name
-#   subnet_id = azurerm_subnet.snet_web.id
-#   lb_ip     = var.lb_ip
-#   backend_addresses = [
-#     var.web1_ip,
-#     var.web2_ip
-#   ]
-#   vnet_id = azurerm_virtual_network.vnet.id
-# }
+module "lb" {
+  source    = "../Modules/LoadBalancer"
+  pip_name  = "pip-lb"
+  lb_name   = "lb-web"
+  location  = var.location
+  rg_name   = azurerm_resource_group.rg.name
+  subnet_id = azurerm_subnet.snet_web.id
+  lb_ip     = var.lb_ip
+  backend_addresses = [
+    var.web1_ip,
+    var.web2_ip
+  ]
+  vnet_id = azurerm_virtual_network.vnet.id
+}
 
-# module "vm_dc1" {
-#   source               = "./Modules/WindowsVM"
-#   nic_name             = "nic_dc1"
-#   location             = var.location
-#   rg_name              = azurerm_resource_group.rg.name
-#   private_ip_address   = var.dc1_ip
-#   subnet_id            = azurerm_subnet.snet_adds.id
-#   vm_name              = "vmdc1"
-#   admin_username       = var.vm_username
-#   admin_password       = var.vm_password
-#   storage_account_type = "Standard_LRS"
-# }
+module "vm_dc1" {
+  source               = "../Modules/WindowsVM"
+  nic_name             = "nic_acedc1"
+  location             = var.location
+  rg_name              = azurerm_resource_group.rg.name
+  private_ip_address   = var.dc1_ip
+  subnet_id            = azurerm_subnet.snet_adds.id
+  vm_name              = "vmacedc1"
+  admin_username       = var.vm_username
+  admin_password       = var.vm_password
+  storage_account_type = "Standard_LRS"
+}
 
-# module "vm_dc2" {
-#   source               = "./Modules/WindowsVM"
-#   nic_name             = "nic_dc2"
-#   location             = var.location
-#   rg_name              = azurerm_resource_group.rg.name
-#   private_ip_address   = var.dc2_ip
-#   subnet_id            = azurerm_subnet.snet_adds.id
-#   vm_name              = "vmdc2"
-#   admin_username       = var.vm_username
-#   admin_password       = var.vm_password
-#   storage_account_type = "Standard_LRS"
-# }
+module "vm_dc2" {
+  source               = "../Modules/WindowsVM"
+  nic_name             = "nic_acedc2"
+  location             = var.location
+  rg_name              = azurerm_resource_group.rg.name
+  private_ip_address   = var.dc2_ip
+  subnet_id            = azurerm_subnet.snet_adds.id
+  vm_name              = "vmacedc2"
+  admin_username       = var.vm_username
+  admin_password       = var.vm_password
+  storage_account_type = "Standard_LRS"
+}
 
 
 
