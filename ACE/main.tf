@@ -185,7 +185,7 @@ module "vm_dc2" {
 }
 
 resource "azurerm_resource_group" "rg_deleteme-thisisapipelinetest" {
-    name     = "rg-deleteme-thisisapipelinetest"
+  name     = "rg-deleteme-thisisapipelinetest"
   location = var.location
   tags     = { "terraform" = true }
 }
