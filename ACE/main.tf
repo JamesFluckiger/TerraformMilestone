@@ -143,20 +143,20 @@ module "vm_web2" {
   storage_account_type = "Standard_LRS"
 }
 
-module "lb" {
-  source    = "../Modules/LoadBalancer"
-  pip_name  = "pip-lb"
-  lb_name   = "lb-web"
-  location  = var.location
-  rg_name   = azurerm_resource_group.rg.name
-  subnet_id = azurerm_subnet.snet_web.id
-  lb_ip     = var.lb_ip
-  backend_addresses = [
-    var.web1_ip,
-    var.web2_ip
-  ]
-  vnet_id = azurerm_virtual_network.vnet.id
-}
+# module "lb" {
+#   source    = "../Modules/LoadBalancer"
+#   pip_name  = "pip-lb"
+#   lb_name   = "lb-web"
+#   location  = var.location
+#   rg_name   = azurerm_resource_group.rg.name
+#   subnet_id = azurerm_subnet.snet_web.id
+#   lb_ip     = var.lb_ip
+#   backend_addresses = [
+#     var.web1_ip,
+#     var.web2_ip
+#   ]
+#   vnet_id = azurerm_virtual_network.vnet.id
+# }
 
 module "vm_dc1" {
   source               = "../Modules/WindowsVM"
