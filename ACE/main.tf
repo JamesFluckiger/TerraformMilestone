@@ -51,7 +51,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "snet_bastion" {
   resource_group_name  = azurerm_resource_group.rg.name
-  name                 = "${var.snet_bastion_name}"
+  name                 = var.snet_bastion_name
   address_prefixes     = var.snet_bastion_address_space
   virtual_network_name = azurerm_virtual_network.vnet.name
 }

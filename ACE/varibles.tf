@@ -44,12 +44,12 @@ variable "snet_adds_address_space" {
 
 
 variable "snet_web_name" {
-  type = string
+  type    = string
   default = null
 }
 
 variable "snet_web_address_space" {
-  type = list(string)
+  type    = list(string)
   default = null
 }
 
@@ -66,13 +66,13 @@ variable "lb_ip" {
 
 variable "vm_username" {
   description = "The username for the VMs."
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 variable "vm_password" {
   description = "The password for the VMs."
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 
 variable "web1_ip" {
