@@ -184,11 +184,11 @@ module "vm_dc2" {
   storage_account_type = "Standard_LRS"
 }
 
-# resource "azurerm_resource_group" "rg_deleteme-thisisapipelinetest" {
-#   name     = "rg-deleteme-thisisapipelinetest"
-#   location = var.location
-#   tags     = { "terraform" = true }
-# }
+resource "azurerm_resource_group" "rg_deleteme-thisisapipelinetest" {
+  name     = "rg-deleteme-thisisapipelinetest"
+  location = var.location
+  tags     = { "terraform" = true }
+}
 
 
 
